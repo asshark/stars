@@ -1,0 +1,13 @@
+<h2>My Stars</h2>
+<ul class="stars">
+  <li *ngFor="let starE of allstars"> 
+
+      <a routerLink="/detail/{{starE.id}}">
+        <span class="badge">{{starE.id}}</span> {{starE.name}}
+      </a>    
+
+  </li>
+</ul>
+
+
+
