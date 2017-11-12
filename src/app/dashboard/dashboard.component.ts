@@ -17,9 +17,10 @@ export class DashboardComponent implements OnInit {
   }
  
   getTopStars(): void {
-    console.log('...items....' + this.starService.allStars.length);
-    this.starService.allStars.filter(function (item) { return item.rank > 4; })
-    //getNum()
-      //.subscribe(sts => this.topstars = sts.slice(1, 5));
+    //
+    this.starService.getAllStarJSON().subscribe(allS => 
+      {console.log('...items....' + allS.length);
+      this.topstars = allS.filter(function (item) { return item.rank > 4; })}
+    );
   }
 }

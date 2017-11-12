@@ -13,11 +13,16 @@ export class StarsComponent implements OnInit {
   constructor(private starService: StarService) { }
 
   getMyStars(): void {
-    //this.starService.getAllStarJSON().subscribe(data=>{
-    //  this.allstars = data;
-    //  console.log(data);
-    //});
-    this.allstars = this.starService.allStars;
+    if(this.starService.allStars != null && this.starService.allStars.length >0)
+      this.allstars = this.starService.allStars;
+    else
+    {
+      this.starService.getAllStarJSON().subscribe(data=>{
+        this.allstars = data;
+        console.log(data);
+      });
+    }
+
   }
 
   ngOnInit() {

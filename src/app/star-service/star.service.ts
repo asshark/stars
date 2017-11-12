@@ -19,7 +19,7 @@ export class StarService {
     private messageService: MessageService
     ) 
     {
-      this.getAllStarJSON().subscribe(data => this.allStars=data, error => console.log(error));
+      //this.getAllStarJSON().subscribe(data => this.allStars=data, error => console.log(error));
     }
 
   public getAllStarJSON(): Observable<any> {
