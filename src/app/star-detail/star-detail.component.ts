@@ -26,7 +26,7 @@ export class StarDetailComponent implements OnInit {
 
   getStar(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.starService.getStar(id).subscribe(st => this.star = st);
+    this.starService.getStar(id);
   }
 
   goBack(): void {

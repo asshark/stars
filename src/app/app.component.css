@@ -26,3 +26,9 @@
     background-color: #4CAF50;
     color: white;
 }
+
+.star-search_right{
+    float:right;
+    padding: 10px;
+    color:brown
+}
