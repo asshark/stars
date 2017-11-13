@@ -1,17 +1,19 @@
-<h1>test 2</h1>
-<div *ngIf="star">
-    <h1>test</h1>
-  <h2>{{ star.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{star.id}}</div>
-  <div><span>name: </span>{{star.name}}</div>
-  <div><span>rank: </span>{{star.rank}}</div>
+<div *ngIf="selectedStar">
+  <h1>{{ selectedStar.name | uppercase}} Details</h1>
+  <div><span>id: </span>{{selectedStar.id}}</div>
+  <div><span>name: </span>{{selectedStar.name}}</div>
+  <div><span>rank: </span>{{selectedStar.rank}}</div>
   
+  <ul class="stars">
+    <li *ngFor="let clip of selectedStarClips"> 
+          <span class="badge">{{clip.name}}</span> {{clip.name}}
+    </li>
+  </ul>
+
   <div>
     <label>name:
-      <input [(ngModel)]="star.name" placeholder="name">
+      <input [(ngModel)]="selectedStar.name" placeholder="name">
     </label>
   </div>
-  </div>
-
-
   <button (click)="goBack()">go back</button>
+  </div>
