@@ -1,11 +1,15 @@
 <h2>My Stars</h2>
+<div>
+    <button type="button" class="btn btn-default" *ngFor="let tag of uniqTags"
+        (click)="addTagToFilter(tag)" [ngClass]="{'btn-primary': (tagFilter.indexOf(tag) != -1)}">
+        {{tag}}
+    </button>
+</div>
 <ul class="stars">
-  <li *ngFor="let starE of allstars"> 
-
+  <li *ngFor="let starE of allstars | sortBy: 'rank'"> 
       <a routerLink="/detail/{{starE.id}}">
         <span class="badge">{{starE.rank}}</span> {{starE.name}}
       </a>    
-
   </li>
 </ul>
 
