@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -10,7 +11,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message-service/message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {FilterPipe, SortByPipe} from './filters/pipes'
+import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe} from './filters/pipes'
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import {FilterPipe, SortByPipe} from './filters/pipes'
     StarDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    FilterPipe, SortByPipe
+    FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe
   ],
   imports: [
     HttpClientModule,

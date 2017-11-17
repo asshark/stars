@@ -6,7 +6,7 @@
   
   <ul class="stars">
     <li *ngFor="let clip of selectedStarClips"> 
-          <span class="badge">{{clip.name}}</span> {{clip.name}}
+          <span class="badge">{{clip.name}}</span> {{clip.studio}} <span ngif=clip.series> - {{clip.series}}</span>
     </li>
   </ul>
 

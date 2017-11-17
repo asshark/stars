@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgIf } from '@angular/common';
 
 import { Star } from '../model/star';
 import { Clip } from '../model/clip';

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Star } from '../model/star';
 import { StarService } from '../star-service/star.service';
-import {FilterPipe, SortByPipe} from '../filters/pipes'
+import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe} from '../filters/pipes'
 
 @Component({
   selector: 'app-stars',
@@ -12,7 +12,9 @@ export class StarsComponent implements OnInit {
  
   allstars: Star[];
   uniqTags: string[];
-  tagFilter: string[];
+  @Input() tagFilter: string[];
+  alphabet:string[]; 
+  activeLetter: string;
 
   constructor(
     private starService: StarService
@@ -27,7 +29,12 @@ export class StarsComponent implements OnInit {
     else
         this.tagFilter.splice(index, 1);
 
-    console.log("Tag Filter : " + this.tagFilter);
+    //console.log("Tag Filter : " + this.tagFilter);
+  }
+
+  setActiveLetter (letter:string): void
+  {
+    this.activeLetter = letter;
   }
 
   prepareUniqueTags(): void
@@ -65,6 +72,8 @@ export class StarsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.alphabet = "*abcdefghijklmnopqrstuvwxyz".split("");
+    this.activeLetter = '*';
     this.getMyStars();
   }
  
