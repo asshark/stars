@@ -1,11 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <div class="star-search_right">
-        Search: <input ng-model="$scope.filterby" />
-  </div>
-  <h1>
-        Welcome to {{title}}!
-  </h1>
+<div class="topheader">
+    <img src="./assets/img/sh2.jpg" alt="logo" />
+    <h1>Welcome to {{title}}!</h1>
 </div>
 
 <div class="topnav" id="myTopnav">
@@ -13,8 +9,16 @@
   <a href="/stars">Index</a>
   <a href="#contact">Contact</a>
   <a href="#about">About</a>
+  <div class="star-search_right">
+      <input #searchBox id="search-box" placeholder="Search ..." 
+      (keyup.enter)="searchBy(searchBox.value)"
+      (blur)="searchBy(searchBox.value)" />
+  </div>
 </div>
 
-<router-outlet></router-outlet>
 
-<app-messages></app-messages>
+<router-outlet></router-outlet>
+<div class="footer">
+    <app-messages></app-messages>
+</div>
+

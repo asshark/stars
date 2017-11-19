@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgIf } from '@angular/common';
+
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -11,7 +12,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message-service/message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe} from './filters/pipes'
+import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe} from './filters/pipes';
+import { StarSearchComponent } from './star-search/star-search.component'
 
 
 @NgModule({
@@ -21,7 +23,7 @@ import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe} from '
     StarDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe
+    FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, StarSearchComponent
   ],
   imports: [
     HttpClientModule,
@@ -34,4 +36,5 @@ import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe} from '
 })
 export class AppModule {
   
+
  }

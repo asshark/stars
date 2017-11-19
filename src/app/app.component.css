@@ -1,3 +1,49 @@
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('../assets/img/searchicon.png');
+    background-position: 2px 2px; 
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 100%;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #555;
+    color: white;
+    text-align: center;
+}
+
+.topheader
+{
+    background-color: rgb(255, 255, 255);
+    color: #f3b2b2;
+    text-align: center;    
+    text-decoration: none;
+    padding: 5px 5px;
+}
+
+.topheader img {
+    float: right;
+    width: 70px;
+    height: 70px;
+    background: #555;
+  }
+
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: #333;
