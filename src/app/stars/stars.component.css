@@ -1,5 +1,5 @@
 /* starsComponent's private CSS styles */
-.selected {
+  .selected {
     background-color: #CFD8DC !important;
     color: white;
   }
@@ -7,7 +7,7 @@
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
-    width: 15em;
+    width: 64em;
   }
   .stars li {
     cursor: pointer;
@@ -36,13 +36,13 @@
     display: inline-block;
     font-size: small;
     color: white;
-    padding: 0.8em 0.7em 0 0.7em;
-    background-color: #607D8B;
+    padding: 0.5em 0.7em 0.7em 0.7em;
+    background-color: rgb(89, 96, 99);
     line-height: 1em;
     position: relative;
     left: -1px;
-    top: -4px;
+    top: -5px;
     height: 1.8em;
     margin-right: .8em;
-    border-radius: 4px 0 0 4px;
+    border-radius: 6px 6px 6px 6px;
   }
