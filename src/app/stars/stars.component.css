@@ -44,5 +44,27 @@
     top: -5px;
     height: 1.8em;
     margin-right: .8em;
-    border-radius: 6px 6px 6px 6px;
+    border-radius: 10px 10px 10px 10px;
   }
+
+  .stars .badgeRed {
+
+    font-size: small;
+    color: white;
+    padding: 0.5em 0.7em 0.7em 0.7em;
+    background-color: red;
+    line-height: 1em;
+    position: relative;
+    border-radius: 10px 10px 10px 10px;
+  }
+
+  .stars .badgeGreen {
+    
+        font-size: small;
+        color: white;
+        padding: 0.5em 0.7em 0.7em 0.7em;
+        background-color: green;
+        line-height: 1em;
+        position: relative;
+        border-radius: 10px 10px 10px 10px;
+      }  

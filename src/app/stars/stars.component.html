@@ -18,7 +18,9 @@
 <ul class="stars">
   <li *ngFor="let starE of allstars | sortBy: 'name' | filterByTag: tagFilter | filterByFirstLetter: activeLetter"> 
       <a routerLink="/detail/{{starE.id}}">
-        <span class="badge">{{starE.name}}</span> {{starE.clips}}/{{starE.rank}} 
+        <span class="badge" [ngClass]="{'badgeRed': starE.rank > 4}">{{starE.rank}}</span> 
+        <span class="badge" [ngClass]="{'badgeGreen': starE.clips > 30}">{{starE.clips}}</span> 
+        {{starE.name}} {{starE.description}} 
       </a>    
   </li>
 </ul>

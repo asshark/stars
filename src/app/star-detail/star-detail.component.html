@@ -1,12 +1,18 @@
 <div *ngIf="selectedStar">
-  <h1>{{ selectedStar.name | uppercase}} Details</h1>
-  <div><span>id: </span>{{selectedStar.id}}</div>
-  <div><span>name: </span>{{selectedStar.name}}</div>
-  <div><span>rank: </span>{{selectedStar.rank}}</div>
-  
+
+    <div class="card">
+        <img src={{imgUrl}} alt="Avatar">
+        <div class="container">
+          <h4><b>{{selectedStar.name}}</b></h4> 
+          <p>Rank {{selectedStar.rank}} & {{selectedStar.clips}} clips</p> 
+        </div>
+      </div>
+
   <ul class="stars">
     <li *ngFor="let clip of selectedStarClips"> 
-          <span class="badge">{{clip.name}}</span> {{clip.studio}} <span ngif=clip.series> - {{clip.series}}</span>
+          <span class="badge">{{clip.name}}</span> 
+          <span>{{clip.studio}}</span>
+          <span>{{clip.series}}</span>
     </li>
   </ul>
 
