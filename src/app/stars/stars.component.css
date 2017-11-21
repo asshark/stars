@@ -1,3 +1,8 @@
+.star-search_right{
+  float:right;
+  padding: 10px;
+  color:brown
+}
 /* starsComponent's private CSS styles */
   .selected {
     background-color: #CFD8DC !important;

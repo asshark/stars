@@ -1,5 +1,20 @@
 <h2>My Stars</h2>
 
+<div class="star-search_right">
+    <input #searchBox id="search-box" placeholder="Filter by ..." />
+</div>
+<div class="star-search_right">
+    Sort by:
+    <select ng-model="$ctrl.orderProp">
+        <option value="id">Alphabetical</option>
+        <option value="addeddt">Newest</option>
+        <option value="moddt">Modified</option>
+        <option value="-rank">Rank</option>
+        <option value="-clips">Number of clips</option>
+    </select>
+</div>
+
+
 <div>
     <button type="button" class="btn-alphabet btn btn-default" *ngFor="let letter of alphabet"
         (click)="setActiveLetter(letter)" [ngClass]="{'btn-primary': letter==activeLetter}">
