@@ -1,16 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'filter',
+    name: 'filterBy',
     pure: false
 })
 export class FilterPipe implements PipeTransform {
     transform(items: any[], term): any {
-        console.log('term', term);
-      
-        return term 
-            ? items.filter(item => item.title.indexOf(term) !== -1)
-            : items;
+        if(items == null || term == null)
+            return items;
+        console.log('Filtering by ', term);
+        return items.filter(item => item.id.indexOf(term) !== -1);
     }
 }
 
@@ -21,17 +20,27 @@ export class SortByPipe implements PipeTransform {
     transform(items: any[], sortedBy: string): any {
         console.log('sortedBy', sortedBy);
         
-        if(items == null)
-            return 0;
+        if(items == null || sortedBy == null)
+            return items;
+        console.log('Sorting by ', sortedBy);
 
-        return items.sort((a, b) => {
+        if(sortedBy == 'rank' || sortedBy == 'clips')
+        {
+            return items.sort((a,b) => a[sortedBy] - b[sortedBy]);
+        }
+        if(sortedBy == '-rank' || sortedBy == '-clips')
+        {
+            sortedBy = sortedBy.substring(1);
+            return items.sort((a,b) => b[sortedBy] - a[sortedBy]);
+        }        
+        else return items.sort((a, b) => {
             if (a[sortedBy] < b[sortedBy]) {
-                return -1;
-              } else if (a[sortedBy] > b[sortedBy]) {
+                    return -1;
+            } else if (a[sortedBy] > b[sortedBy]) {
                 return 1;
-              } else {
+            } else {
                 return 0;
-              }
+            }
         });
     }
 }
@@ -42,8 +51,8 @@ export class SortByPipe implements PipeTransform {
 })
 export class FilterByTagPipe implements PipeTransform {
     transform(items: any[], args: any[]): any {
-        console.log('filterByTag 1 - ', items);
-        console.log('filterByTag 2 - ', args);
+        //console.log('filterByTag 1 - ', items);
+        //console.log('filterByTag 2 - ', args);
         
         if(args == null || args.length == 0)
             return items;
@@ -74,8 +83,8 @@ export class FilterByTagPipe implements PipeTransform {
 })
 export class FilterByFirstLetterPipe implements PipeTransform {
     transform(items: any[], args: any[]): any {
-        console.log('filterByFirstLetter 1 - ', items);
-        console.log('filterByFirstLetter 2 - ', args);
+        //console.log('filterByFirstLetter 1 - ', items);
+        //console.log('filterByFirstLetter 2 - ', args);
         
         if(args == null || args.length == 0 || args[0] == '*')
             return items;

@@ -1,11 +1,11 @@
 <h2>My Stars</h2>
 
 <div class="star-search_right">
-    <input #searchBox id="search-box" placeholder="Filter by ..." />
+    <input #filerBox id="search-box" placeholder="Filter by ..." [(ngModel)]="filterName" />
 </div>
 <div class="star-search_right">
     Sort by:
-    <select ngmodel="$ctrl.orderProp">
+    <select [(ngModel)]="orderProp">
         <option value="id">Alphabetical</option>
         <option value="addeddt">Newest</option>
         <option value="moddt">Modified</option>
@@ -31,11 +31,14 @@
 
 
 <ul class="stars">
-  <li *ngFor="let starE of allstars | sortBy: 'name' | filterByTag: tagFilter | filterByFirstLetter: activeLetter"> 
+  <li *ngFor="let starE of allstars | sortBy: orderProp | filterByTag: tagFilter | filterByFirstLetter: activeLetter | filterBy: filterName"> 
       <a routerLink="/detail/{{starE.id}}">
         <span class="badge" [ngClass]="{'badgeRed': starE.rank > 4}">{{starE.rank}}</span> 
         <span class="badge" [ngClass]="{'badgeGreen': starE.clips > 30}">{{starE.clips}}</span> 
         {{starE.name}} {{starE.description}} 
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
       </a>    
   </li>
 </ul>
