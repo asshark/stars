@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { Star } from '../model/star';
 import { Clip } from '../model/clip';
 
@@ -11,32 +10,36 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class StarService {
 
-  private starsUrl = './assets/db/allstars.json';  // URL to web api
+  //private starsUrl = './assets/db/allstars.json';  // URL to web api
+  private starsUrl = 'http://localhost:39958/StarService.svc/GetAllStars/';  // URL to web api
   private clipsUrl = './assets/db/stars/';  // URL to web api
 
-  allStars: Star[];
-  items: Observable<Star[]>;
+  oStars: Observable<Star[]>;
+  Stars: Star[];
 
   constructor( private http: HttpClient,  private messageService: MessageService ) 
     {
-      this.items = this.http.get(this.starsUrl) as Observable<Star[]>;
-      this.items.subscribe(data => {this.allStars = data, this.log(`Items in Star db = ${this.allStars.length}`), error => console.log(error)});
+      this.messageService.addLog('Service instance created');
+      this.oStars = this.http.get<Star[]>(this.starsUrl);
+      this.oStars
+      .subscribe(data => 
+        {
+          this.Stars = data;
+          this.log(`Items in Star db = ${data.length}`), error => console.log(error)
+        });
     }
 
-  public getAllStarJSON(): Observable<any> {
-      return this.items;
+  public getAllStar(): Observable<any> {
+      return this.oStars;
     }
-
-  getStars(): Star[] {
-    return this.allStars;
-  }
 
   getStar(id: string): Star {
-    // Todo: send the message _after_ fetching the hero
     this.log(`fetched hero id=${id}`);
-    //var s = this.allStars.filter(st => {st.rank == 0})[0];
     var ret = null;
-    this.allStars.forEach(element => {
+    if(!this.Stars)
+      return null;
+
+    this.Stars.forEach(element => {
       if(element.id === id)
       {
         this.log(`... id= ${element.id} compared with = ${id} and the result is ` + (element.id === id) );

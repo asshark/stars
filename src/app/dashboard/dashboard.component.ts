@@ -8,7 +8,7 @@ import { StarService } from '../star-service/star.service';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  topstars: Star[] = [];
+  topstars: Star[];
  
   constructor(private starService: StarService) { }
  
@@ -18,9 +18,16 @@ export class DashboardComponent implements OnInit {
  
   getTopStars(): void {
     //
-    this.starService.getAllStarJSON().subscribe(allS => 
-      {console.log('...items....' + allS.length);
-      this.topstars = allS.filter(function (item) { return item.rank > 4; })}
+    this.starService.getAllStar().subscribe
+    (allS => 
+      {
+        this.topstars = allS.filter(item => 
+          { 
+            console.log('...items....' + item.rank);
+            return ( (item.rank as number) > 4)
+          }
+          //console.log('...items....' + this.topstars.length) 
+        )}
     );
   }
 }

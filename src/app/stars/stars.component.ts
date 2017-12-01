@@ -20,6 +20,40 @@ export class StarsComponent implements OnInit {
     private starService: StarService
   ) { }
 
+  ngOnInit() {
+    this.alphabet = "*abcdefghijklmnopqrstuvwxyz".split("");
+    this.activeLetter = '*';
+    this.getMyStars();
+  }  
+
+  private deepArrayCopy(arr: Star[]): Star[] {
+    const result: Star[] = [];
+    if (!arr) {
+      return result;
+    }
+    const arrayLength = arr.length;
+    for (let i = 0; i <= arrayLength; i++) {
+      const item = arr[i];
+      if (item) {
+        var st = new Star();
+        st.id = item.id;
+        st.name = item.name;
+        result.push(st);
+      }
+    }
+    return result;
+  }  
+
+  getMyStars(): void {
+    this.starService.getAllStar().subscribe(data=>
+    {
+      this.allstars = data;
+      this.prepareUniqueTags();
+      console.log(data);
+    });
+  }
+
+
 
   addTagToFilter(tag: string): void
   {
@@ -28,8 +62,6 @@ export class StarsComponent implements OnInit {
         this.tagFilter.push(tag);
     else
         this.tagFilter.splice(index, 1);
-
-    //console.log("Tag Filter : " + this.tagFilter);
   }
 
   setActiveLetter (letter:string): void
@@ -42,39 +74,18 @@ export class StarsComponent implements OnInit {
     this.tagFilter = new Array();
     this.uniqTags = new Array();
 
-    for(let st of this.allstars)
+    if(this.allstars != null)
     {
-      var localTags = [];
-      localTags = st.tags;
-      for (var i = 0; i < localTags.length; i++) 
+      for(let st of this.allstars)
       {
-        if (this.uniqTags == null || this.uniqTags.indexOf(localTags[i]) == -1)
-          this.uniqTags.push(localTags[i]);
+        var localTags = [];
+        localTags = st.tags;
+        for (var i = 0; i < localTags.length; i++) 
+        {
+          if (this.uniqTags == null || this.uniqTags.indexOf(localTags[i]) == -1)
+            this.uniqTags.push(localTags[i]);
+        }
       }
     }
   }
-
-  getMyStars(): void {
-    if(this.starService.allStars != null && this.starService.allStars.length >0)
-    {
-      this.allstars = this.starService.allStars;
-      this.prepareUniqueTags();
-    }
-    else
-    {
-      this.starService.getAllStarJSON().subscribe(data=>
-      {
-        this.allstars = data;
-        this.prepareUniqueTags();
-        console.log(data);
-      });
-    }
-  }
-
-  ngOnInit() {
-    this.alphabet = "*abcdefghijklmnopqrstuvwxyz".split("");
-    this.activeLetter = '*';
-    this.getMyStars();
-  }
- 
 }

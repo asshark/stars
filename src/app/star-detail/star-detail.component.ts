@@ -5,6 +5,7 @@ import { Clip } from '../model/clip';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { StarService }  from '../star-service/star.service';
+import { MessageService } from '../message-service/message.service';
 
 @Component({
   selector: 'app-star-detail',
@@ -20,9 +21,12 @@ export class StarDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private starService: StarService,
-    private location: Location
+    private location: Location,
+    private messageService: MessageService
+  ) 
+  { 
 
-  ) { }
+  }
 
   ngOnInit(): void {
     this.getStar();
