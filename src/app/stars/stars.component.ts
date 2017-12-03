@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Star } from '../model/star';
 import { StarService } from '../star-service/star.service';
-import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe} from '../filters/pipes'
+import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe} from '../filters/pipes'
 
 @Component({
   selector: 'app-stars',
@@ -24,24 +24,6 @@ export class StarsComponent implements OnInit {
     this.alphabet = "*abcdefghijklmnopqrstuvwxyz".split("");
     this.activeLetter = '*';
     this.getMyStars();
-  }  
-
-  private deepArrayCopy(arr: Star[]): Star[] {
-    const result: Star[] = [];
-    if (!arr) {
-      return result;
-    }
-    const arrayLength = arr.length;
-    for (let i = 0; i <= arrayLength; i++) {
-      const item = arr[i];
-      if (item) {
-        var st = new Star();
-        st.id = item.id;
-        st.name = item.name;
-        result.push(st);
-      }
-    }
-    return result;
   }  
 
   getMyStars(): void {
@@ -88,4 +70,12 @@ export class StarsComponent implements OnInit {
       }
     }
   }
+
+  starClicked(st: Star, i: number)
+  {
+    console.log("span clicked function called");
+    st.rank = i;
+    this.starService.saveStar(st);
+  }
+
 }

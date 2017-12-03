@@ -11,7 +11,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message-service/message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe} from './filters/pipes';
+import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe,TimesPipe} from './filters/pipes';
 import { StarSearchComponent } from './star-search/star-search.component'
 
 
@@ -22,7 +22,7 @@ import { StarSearchComponent } from './star-search/star-search.component'
     StarDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, StarSearchComponent
+    FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe, StarSearchComponent
   ],
   imports: [
     HttpClientModule,

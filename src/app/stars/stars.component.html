@@ -32,14 +32,14 @@
 
 <ul class="stars">
   <li *ngFor="let starE of allstars | sortBy: orderProp | filterByTag: tagFilter | filterByFirstLetter: activeLetter | filterBy: filterName"> 
+      <span class="badge" [ngClass]="{'badgeRed': starE.rank > 4}">{{starE.rank}}</span> 
+      <span class="badge" [ngClass]="{'badgeGreen': starE.clips > 30}">{{starE.clips}}</span> 
       <a routerLink="/detail/{{starE.id}}">
-        <span class="badge" [ngClass]="{'badgeRed': starE.rank > 4}">{{starE.rank}}</span> 
-        <span class="badge" [ngClass]="{'badgeGreen': starE.clips > 30}">{{starE.clips}}</span> 
         {{starE.name}} {{starE.description}} 
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
       </a>    
+      <span  *ngFor="let i of starE.rank | times" class="fa fa-star checked" (click)="starClicked(starE, i)"> </span>
+      <span *ngFor="let i of (6-starE.rank) | times" class="fa fa-star" (click)="starClicked(starE, starE.rank+i)"></span>
+
   </li>
 </ul>
 

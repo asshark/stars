@@ -5,13 +5,14 @@ import { Clip } from '../model/clip';
 import { Observable } from 'rxjs/Rx';
 import { of } from 'rxjs/observable/of';
 import { MessageService } from '../message-service/message.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEvent, HttpInterceptor, HttpRequest } from '@angular/common/http';
 
 @Injectable()
 export class StarService {
 
-  //private starsUrl = './assets/db/allstars.json';  // URL to web api
-  private starsUrl = 'http://localhost:39958/StarService.svc/GetAllStars/';  // URL to web api
+  //private starsUrlGet = './assets/db/allstars.json';  // URL to web api
+  private starsUrlGet = 'http://localhost:39958/StarService.svc/GetAllStars/';  // URL to web api
+  private starsUrlPost = 'http://localhost:39958/StarService.svc/Save/';  // URL to web api
   private clipsUrl = './assets/db/stars/';  // URL to web api
 
   oStars: Observable<Star[]>;
@@ -20,7 +21,7 @@ export class StarService {
   constructor( private http: HttpClient,  private messageService: MessageService ) 
     {
       this.messageService.addLog('Service instance created');
-      this.oStars = this.http.get<Star[]>(this.starsUrl);
+      this.oStars = this.http.get<Star[]>(this.starsUrlGet);
       this.oStars
       .subscribe(data => 
         {
@@ -32,6 +33,11 @@ export class StarService {
   public getAllStar(): Observable<any> {
       return this.oStars;
     }
+
+  public saveStar(st: Star) 
+  {
+    this.http.post<Star>(this.starsUrlPost, st);
+  }
 
   getStar(id: string): Star {
     this.log(`fetched hero id=${id}`);
