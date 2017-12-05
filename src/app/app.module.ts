@@ -13,7 +13,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe,TimesPipe} from './filters/pipes';
 import { StarSearchComponent } from './star-search/star-search.component'
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CustomInterceptor } from './star-service/star.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,11 @@ import { StarSearchComponent } from './star-search/star-search.component'
     FormsModule,
     AppRoutingModule
   ],
-  providers: [StarService, MessageService],
+  providers: [StarService, MessageService
+    //, {provide: HTTP_INTERCEPTORS,
+    //useClass: CustomInterceptor,
+    //multi: true }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule {

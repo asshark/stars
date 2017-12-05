@@ -75,7 +75,7 @@ export class StarsComponent implements OnInit {
   {
     console.log("span clicked function called");
     st.rank = i;
-    this.starService.saveStar(st);
+    this.starService.saveStar(st).subscribe();
   }
 
 }

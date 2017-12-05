@@ -4,7 +4,7 @@ export class Star {
     rank: number;
     tags: string[];
     dob: Date;
-    gender: string;
+    //gender: Date;
     img: string;
     country: string;
     knownas: string[];
@@ -18,7 +18,7 @@ export class Star {
     breast: string;
     pussy: string;
 
-    /*constructor(  id: string,
+    constructor(  id: string,
       name: string,
       rank: number,
       tags: string[],
@@ -38,5 +38,5 @@ export class Star {
       pussy: string,)
     {
       this.id = id;
-    }*/
+    }
   }
