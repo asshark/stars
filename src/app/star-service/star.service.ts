@@ -25,7 +25,8 @@ export class StarService {
   //private starsUrlGet = './assets/db/allstars.json';  // URL to web api
   private starsUrlGetAllStars = 'GetAllStars';  // URL to Get All Stars
   private starsUrlGetStarClips = 'GetAllClips/';  // URL to Get All Stars
-  private starsUrlSaveStar ='Save';  // URL to SaveApi
+  private starsUrlSaveStar ='SaveStar';  // URL to SaveApi
+  private starsUrlSaveClip ='SaveClip';  // URL to SaveApi
   private clipsUrl = './assets/db/stars/';  // URL to web api
 
   oStars: Observable<Star[]>;
@@ -57,6 +58,15 @@ export class StarService {
   {
     //var st1 = new Star();
     return this.http.post<Star>(this.starsBaseUrl + this.starsUrlSaveStar, st, {
+      headers : {
+          'Content-Type' : 'application/json; charset=UTF-8'
+      }});
+  }
+
+  public saveClip(cl: Clip):Observable<Clip>
+  {
+    //var st1 = new Star();
+    return this.http.post<Clip>(this.starsBaseUrl + this.starsUrlSaveClip, cl, {
       headers : {
           'Content-Type' : 'application/json; charset=UTF-8'
       }});

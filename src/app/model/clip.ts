@@ -1,6 +1,7 @@
 import { Time } from "@angular/common/src/i18n/locale_data_api";
 
 export class Clip {
+    starid: string;
     name: string;
     rank: number;
     tags: string[];
@@ -10,6 +11,8 @@ export class Clip {
     img: string;
     url: string;
     addeddt:Date;
+    modifieddt:Date;
     size: number;
     place: string;
+    horse: number;
   }

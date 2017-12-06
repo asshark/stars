@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { StarService }  from '../star-service/star.service';
 import { MessageService } from '../message-service/message.service';
+import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe} from '../filters/pipes'
 
 @Component({
   selector: 'app-star-detail',
@@ -42,5 +43,13 @@ export class StarDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  clipClicked(cl: Clip, i: number)
+  {
+    console.log("span clicked function called");
+    cl.starid = this.selectedStar.id;
+    cl.rank = i;
+    this.starService.saveClip(cl).subscribe();
   }
 }

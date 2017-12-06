@@ -1,3 +1,86 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.checked {
+  color: orange;
+}
+
+.star-search_right{
+  float:right;
+  padding: 10px;
+  color:brown
+}
+/* starsComponent's private CSS styles */
+  .selected {
+    background-color: #CFD8DC !important;
+    color: white;
+  }
+  .stars {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 64em;
+  }
+  .stars li {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;
+  }
+  .stars li.selected:hover {
+    background-color: #BBD8DC !important;
+    color: white;
+  }
+  .stars li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+  }
+  .stars .text {
+    position: relative;
+    top: -3px;
+  }
+  .stars .badge {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 0.5em 0.7em 0.7em 0.7em;
+    background-color: rgb(89, 96, 99);
+    line-height: 1em;
+    position: relative;
+    left: -1px;
+    top: -5px;
+    height: 1.8em;
+    margin-right: .8em;
+    border-radius: 10px 10px 10px 10px;
+  }
+
+  .stars .badgeRed {
+
+    font-size: small;
+    color: white;
+    padding: 0.5em 0.7em 0.7em 0.7em;
+    background-color: red;
+    line-height: 1em;
+    position: relative;
+    border-radius: 10px 10px 10px 10px;
+  }
+
+  .stars .badgeGreen {
+    
+        font-size: small;
+        color: white;
+        padding: 0.5em 0.7em 0.7em 0.7em;
+        background-color: green;
+        line-height: 1em;
+        position: relative;
+        border-radius: 10px 10px 10px 10px;
+      } 
+
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: rgb(216, 221, 207);

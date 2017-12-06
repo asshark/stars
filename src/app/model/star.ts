@@ -4,7 +4,7 @@ export class Star {
     rank: number;
     tags: string[];
     dob: Date;
-    //gender: Date;
+    gender: string;
     img: string;
     country: string;
     knownas: string[];
@@ -17,6 +17,8 @@ export class Star {
     tatoo: string;
     breast: string;
     pussy: string;
+    description: string;
+    horse: number;
 
     constructor(  id: string,
       name: string,
