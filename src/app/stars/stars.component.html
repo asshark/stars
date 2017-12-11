@@ -30,40 +30,18 @@
 </div>
 
 
-<div style="overflow-x:auto;">
-        <table>
-                <thead>
-                        <tr>
-                            <th *ngFor="let col of ['      ','   Name   ', '   Rank   ', '   Clips   ', '   Country   ',  '   Tags   ' ]">
-                                {{col}}
-                            </th>
-                        </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let starE of allstars | sortBy: orderProp | filterByTag: tagFilter | filterByFirstLetter: activeLetter | filterBy: filterName">
-                    <td><button class="btn btn-danger btn-xs"> &times; </button></td>
-                    <td>
-                            <a routerLink="/detail/{{starE.id}}">
-                                {{starE.name}} 
-                            </a>  
-                    </td>
-                    <td>
-                            <span  *ngFor="let i of starE.rank | times" class="fa fa-star checked" (click)="starClicked(starE, i)"> </span>
-                            <span *ngFor="let i of (6-starE.rank) | times" class="fa fa-star" (click)="starClicked(starE, starE.rank+i)"></span>
-                    </td>
-                    <td><span class="badge" [ngClass]="{'badgeGreen': starE.clips > 30}">{{starE.clips}}</span></td>
-                    <td>{{starE.country}}</td>
-                    <div class="btn-group btn-group-xs everythingOnOneLine">
-                        <td><button type="button" class="btn btn-xs btn-primary btn-tag" *ngFor="let tag of starE.tags" (click)="tagClicked(starE, tag)"> {{tag}} </button></td>
-                        <input #newtag (keyup.enter)="addNewTag(starE, newtag.value)" class="form-control input-xs1 " type="text">
-                    </div>    
-                    </tr>
-                </tbody>
-        </table>
-</div>
+<ul class="stars">
+  <li *ngFor="let starE of allstars | sortBy: orderProp | filterByTag: tagFilter | filterByFirstLetter: activeLetter | filterBy: filterName"> 
+      <span class="badge" [ngClass]="{'badgeRed': starE.rank > 4}">{{starE.rank}}</span> 
+      <span class="badge" [ngClass]="{'badgeGreen': starE.clips > 30}">{{starE.clips}}</span> 
+      <a routerLink="/detail/{{starE.id}}">
+        {{starE.name}} {{starE.description}} 
+      </a>    
+      <span  *ngFor="let i of starE.rank | times" class="fa fa-star checked" (click)="starClicked(starE, i)"> </span>
+      <span *ngFor="let i of (6-starE.rank) | times" class="fa fa-star" (click)="starClicked(starE, starE.rank+i)"></span>
 
-
-
+  </li>
+</ul>
 
 
 

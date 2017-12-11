@@ -2,9 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Star } from '../model/star';
 import { StarService } from '../star-service/star.service';
 import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe} from '../filters/pipes'
-import { TagInputModule } from 'ng2-tag-input';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed! 
-
 
 @Component({
   selector: 'app-stars',
@@ -18,7 +15,6 @@ export class StarsComponent implements OnInit {
   @Input() tagFilter: string[];
   alphabet:string[]; 
   activeLetter: string;
-  starTags: string[];
 
   constructor(
     private starService: StarService
@@ -80,22 +76,6 @@ export class StarsComponent implements OnInit {
     console.log("span clicked function called");
     st.rank = i;
     this.starService.saveStar(st).subscribe();
-  }
-
-  tagClicked(st: Star, tag: string)
-  {
-    console.log("span clicked function called");
-    var i = st.tags.indexOf(tag);
-    if(i >= 0)
-    {
-      st.tags.splice(i,1);
-      this.starService.saveStar(st).subscribe();
-    }
-  }
-
-  addNewTag(st: Star, tag: string)
-  {
-    st.tags.push(tag);
   }
 
 }
