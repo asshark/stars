@@ -3,7 +3,6 @@ import { Star } from '../model/star';
 import { StarService } from '../star-service/star.service';
 import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe} from '../filters/pipes'
 
-
 @Component({
   selector: 'app-stars',
   templateUrl: './stars.component.html',
@@ -73,27 +72,5 @@ export class StarsComponent implements OnInit {
     }
   }
 
-  starClicked(st: Star, i: number)
-  {
-    console.log("span clicked function called");
-    st.rank = i;
-    this.starService.saveStar(st).subscribe();
-  }
-
-  tagClicked(st: Star, tag: string)
-  {
-    console.log("span clicked function called");
-    var i = st.tags.indexOf(tag);
-    if(i >= 0)
-    {
-      st.tags.splice(i,1);
-      this.starService.saveStar(st).subscribe();
-    }
-  }
-
-  addNewTag(st: Star, tag: string)
-  {
-    st.tags.push(tag);
-  }
 
 }
