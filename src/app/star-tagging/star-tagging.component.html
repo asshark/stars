@@ -1,0 +1,4 @@
+<div class="btn-group btn-group-xs everythingOnOneLine">
+<button type="button" class="btn btn-xs btn-primary btn-tag" *ngFor="let tag of item.tags" (click)="tagClicked(tag)"> {{tag}} </button>
+<input #newtag (keyup.enter)="addNewTag(newtag.value); newtag.value=''" class="form-control input-xs1 " type="text">
+</div>                        

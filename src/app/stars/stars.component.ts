@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Star } from '../model/star';
 import { StarService } from '../star-service/star.service';
 import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe} from '../filters/pipes'
-import { TagInputModule } from 'ng2-tag-input';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed! 
 
 
 @Component({

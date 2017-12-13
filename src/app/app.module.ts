@@ -15,9 +15,8 @@ import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe,TimesPi
 import { StarSearchComponent } from './star-search/star-search.component'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomInterceptor } from './star-service/star.service';
-//import { TagInputModule } from 'ng2-tag-input';
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed! 
-//import { CommonModule } from '@angular/common/src/common_module';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { StarTaggingComponent } from './star-tagging/star-tagging.component';
 
 @NgModule({
   declarations: [
@@ -26,10 +25,9 @@ import { CustomInterceptor } from './star-service/star.service';
     StarDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe, StarSearchComponent
+    FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe, StarSearchComponent, StarRatingComponent, StarTaggingComponent
   ],
   imports: [
-    //TagInputModule, BrowserAnimationsModule,
     HttpClientModule,
     BrowserModule,
     FormsModule,

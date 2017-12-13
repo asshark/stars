@@ -14,8 +14,8 @@
           <span class="badge">{{clip.name}}</span> 
           <span>{{clip.studio}}</span>
           <span>{{clip.series}}</span>
-          <span  *ngFor="let i of clip.rank | times" class="fa fa-star checked" (click)="clipClicked(clip, i)"> </span>
-          <span *ngFor="let i of (6-clip.rank) | times" class="fa fa-star" (click)="clipClicked(clip, clip.rank+i)"></span>
+          <app-star-rating [item] = "clip"></app-star-rating>
+          <app-star-tagging [item] = "clip"></app-star-tagging>
     </li>
   </ul>
 </div>

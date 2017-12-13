@@ -1,0 +1,2 @@
+<span  *ngFor="let i of item.rank | times" class="fa fa-star checked" (click)="itemClicked(i)"> </span>
+<span *ngFor="let i of (6-item.rank) | times" class="fa fa-star" (click)="itemClicked(item.rank+i)"></span>
