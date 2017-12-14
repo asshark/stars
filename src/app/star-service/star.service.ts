@@ -21,7 +21,9 @@ const httpOptions = {
 @Injectable()
 export class StarService {
 
-  private starsBaseUrl = 'http://localhost:39958/StarService.svc/';  // URL to web api
+  //private starsBaseUrl = 'http://localhost:39958/StarService.svc/';  // URL to web api
+  private starsBaseUrl = 'http://srv.milen.pl/StarService.svc/';  // URL to web api
+  
   //private starsUrlGet = './assets/db/allstars.json';  // URL to web api
   private starsUrlGetAllStars = 'GetAllStars';  // URL to Get All Stars
   private starsUrlGetStarClips = 'GetAllClips/';  // URL to Get All Stars
