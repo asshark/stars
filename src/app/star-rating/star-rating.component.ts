@@ -30,16 +30,7 @@ export class StarRatingComponent implements OnInit {
 
   saveChanges()
   {
-    if(this.item instanceof Star)
-    {
-      this.starService.saveStar(this.item as Star).subscribe();
-      console.log("Star saved");
-    }
-    if(this.item instanceof Clip)
-    {
-      this.starService.saveClip(this.item as Clip).subscribe();
-      console.log("Clip saved");
-    }
- }  
+    this.starService.saveItem(this.item);
+  }  
 
 }

@@ -21,7 +21,8 @@ const httpOptions = {
 @Injectable()
 export class StarService {
 
-  private starsBaseUrl = 'http://localhost:39958/StarService.svc/';  // URL to web api
+  //private starsBaseUrl = 'http://localhost:39958/StarService.svc/';  // URL to web api
+  private starsBaseUrl = 'http://srv.milen.pl/StarService.svc/';  // URL to web api
   //private starsUrlGet = './assets/db/allstars.json';  // URL to web api
   private starsUrlGetAllStars = 'GetAllStars';  // URL to Get All Stars
   private starsUrlGetStarClips = 'GetAllClips/';  // URL to Get All Stars
@@ -53,6 +54,20 @@ export class StarService {
   public getAllStar(): Observable<any> {
       return this.oStars;
     }
+
+  public saveItem(item: any)
+  {
+    if(item.id !== undefined)//Star
+    {
+      this.saveStar(item as Star).subscribe();
+      console.log("Star saved");
+    }
+    else//if(this.item.id !== undefined)Clip
+    {
+      this.saveClip(item as Clip).subscribe();
+      console.log("Clip saved");
+    }
+  }
 
   public saveStar(st: Star):Observable<Star>
   {

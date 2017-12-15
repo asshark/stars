@@ -10,6 +10,8 @@ import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesP
 })
 export class StarsComponent implements OnInit {
  
+  filterName: string;
+  orderProp: string;
   allstars: Star[];
   uniqTags: string[];
   @Input() tagFilter: string[];
