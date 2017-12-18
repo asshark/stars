@@ -15,6 +15,7 @@ import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe,TimesPi
 import { StarSearchComponent } from './star-search/star-search.component'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomInterceptor } from './star-service/star.service';
+import { CookieService } from 'ngx-cookie-service';
 
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { StarTaggingComponent } from './star-tagging/star-tagging.component';
@@ -34,11 +35,7 @@ import { StarTaggingComponent } from './star-tagging/star-tagging.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [StarService, MessageService
-    //, {provide: HTTP_INTERCEPTORS,
-    //useClass: CustomInterceptor,
-    //multi: true }
-],
+  providers: [StarService, MessageService, CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -8,6 +8,8 @@ import { MessageService } from '../message-service/message.service';
 import { HttpClient, HttpHeaders, HttpEvent, HttpInterceptor, HttpRequest,HttpHandler } from '@angular/common/http';
 import { Headers } from '@angular/http';
 import { RequestOptionsArgs } from '@angular/http';
+import { CookieService } from 'ngx-cookie-service';
+
 
 
 const httpOptions = {
@@ -34,8 +36,15 @@ export class StarService {
   oStars: Observable<Star[]>;
   Stars: Star[];
 
-  constructor( private http: HttpClient,  private messageService: MessageService ) 
+  constructor(  private http: HttpClient,  
+                private messageService: MessageService,
+                private cookieService: CookieService ) 
     {
+      var cookieValue = this.cookieService.get('LastAccDate');
+      var today = new Date();
+      this.cookieService.set( 'LastAccDate', today.getDate().toString() );
+
+
       this.messageService.addLog('Service instance created');
       this.oStars = this.http.get<Star[]>(this.starsBaseUrl + this.starsUrlGetAllStars);
       this.oStars
