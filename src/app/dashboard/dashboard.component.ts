@@ -9,15 +9,18 @@ import { StarService } from '../star-service/star.service';
 })
 export class DashboardComponent implements OnInit {
   topstars: Star[];
+  newstars: Star[];
  
   constructor(private starService: StarService) { }
  
   ngOnInit() {
     this.getTopStars();
+    this.starService.setCredentials("arek");
   }
  
   getTopStars(): void {
     //
+    var self = this;
     this.starService.getAllStar().subscribe
     (allS => 
       {
@@ -25,9 +28,13 @@ export class DashboardComponent implements OnInit {
           { 
             console.log('...items....' + item.rank);
             return ( (item.rank as number) > 4)
-          }
-          //console.log('...items....' + this.topstars.length) 
-        )}
+          });
+          this.newstars = allS.filter(item => 
+            { 
+              console.log('...items....' + item.rank);
+              return ( item.addeddt > self.starService.lastVisitDate )
+            });      
+      }
     );
   }
 }

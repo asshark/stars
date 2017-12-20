@@ -7,3 +7,13 @@
     </div>
   </a>
 </div>
+
+<h3>New Stars</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let sts of newstars" class="col-1-4"
+      routerLink="/detail/{{sts.id}}">
+    <div class="module star">
+      <h4>{{sts.name}}</h4>
+    </div>
+  </a>
+</div>

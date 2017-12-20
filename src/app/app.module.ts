@@ -40,5 +40,8 @@ import { StarTaggingComponent } from './star-tagging/star-tagging.component';
 })
 export class AppModule {
   
+  constructor(private starService: StarService) {
+  }
+  
 
  }

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Star } from '../model/star';
 import { Clip } from '../model/clip';
-
 import { Observable } from 'rxjs/Rx';
 import { of } from 'rxjs/observable/of';
 import { MessageService } from '../message-service/message.service';
-import { HttpClient, HttpHeaders, HttpEvent, HttpInterceptor, HttpRequest,HttpHandler } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEvent, HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
 import { Headers } from '@angular/http';
 import { RequestOptionsArgs } from '@angular/http';
 import { CookieService } from 'ngx-cookie-service';
@@ -32,6 +31,8 @@ export class StarService {
   private starsUrlSaveStar ='SaveStar';  // URL to SaveApi
   private starsUrlSaveClip ='SaveClip';  // URL to SaveApi
   private clipsUrl = './assets/db/stars/';  // URL to web api
+  public lastVisitDate: Date;
+  private credentials:string = '';
 
   oStars: Observable<Star[]>;
   Stars: Star[];
@@ -40,10 +41,7 @@ export class StarService {
                 private messageService: MessageService,
                 private cookieService: CookieService ) 
     {
-      var cookieValue = this.cookieService.get('LastAccDate');
-      var today = new Date();
-      this.cookieService.set( 'LastAccDate', today.getDate().toString() );
-
+      this.lastVisitDate = new Date(this.cookieService.get('LastVisitDate'));
 
       this.messageService.addLog('Service instance created');
       this.oStars = this.http.get<Star[]>(this.starsBaseUrl + this.starsUrlGetAllStars);
@@ -53,6 +51,14 @@ export class StarService {
           this.Stars = data;
           this.log(`Items in Star db = ${data.length}`), error => console.log(error)
         });
+    }
+
+    getCredentials():string {
+      return this.credentials;
+    }
+  
+    setCredentials(credentials:string) {
+      this.credentials = credentials;
     }
 
     getStarClips(id: string): Observable<Clip[]> {

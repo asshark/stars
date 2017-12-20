@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener  } from '@angular/core';
 import { Star } from '../model/star';
 import { StarService } from '../star-service/star.service';
 import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe} from '../filters/pipes'
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-stars',
+  host: {'window:beforeunload':'onClose'},
   templateUrl: './stars.component.html',
   styleUrls: ['./stars.component.css']
 })
@@ -20,14 +22,23 @@ export class StarsComponent implements OnInit {
   starTags: string[];
 
   constructor(
-    private starService: StarService
+    private starService: StarService,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit() {
+    var cr = this.starService.getCredentials();
     this.alphabet = "*abcdefghijklmnopqrstuvwxyz".split("");
     this.activeLetter = '*';
     this.getMyStars();
+    
   }  
+
+  @HostListener('window:beforeunload')
+  onClose() {
+    var today = new Date();
+    this.cookieService.set( 'LastVisitDate', today.toString() );
+  }
 
   getMyStars(): void {
     this.starService.getAllStar().subscribe(data=>
