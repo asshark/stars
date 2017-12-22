@@ -3,12 +3,12 @@ import { Star } from '../model/star';
 import { Clip } from '../model/clip';
 import { Observable } from 'rxjs/Rx';
 import { of } from 'rxjs/observable/of';
-import { MessageService } from '../message-service/message.service';
 import { HttpClient, HttpHeaders, HttpEvent, HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
 import { Headers } from '@angular/http';
 import { RequestOptionsArgs } from '@angular/http';
-import { CookieService } from 'ngx-cookie-service';
 
+//import { CookieService } from 'ngx-cookie-service';
+//import { MessageService } from '../message-service/message.service';
 
 
 const httpOptions = {
@@ -37,13 +37,14 @@ export class StarService {
   oStars: Observable<Star[]>;
   Stars: Star[];
 
-  constructor(  private http: HttpClient,  
-                private messageService: MessageService,
-                private cookieService: CookieService ) 
+  constructor(  private http: HttpClient
+                //,private messageService: MessageService
+                //,private cookieService: CookieService 
+              ) 
     {
-      this.lastVisitDate = new Date(this.cookieService.get('LastVisitDate'));
-
-      this.messageService.addLog('Service instance created');
+      //this.lastVisitDate = new Date(this.cookieService.get('LastVisitDate'));
+      console.log('StarService instance created');
+      //this.messageService.addLog('Service instance created');
       this.oStars = this.http.get<Star[]>(this.starsBaseUrl + this.starsUrlGetAllStars);
       this.oStars
       .subscribe(data => 
@@ -120,7 +121,7 @@ export class StarService {
   }
 
   private log(message: string) {
-    this.messageService.addLog('StarService: ' + message);
+    //this.messageService.addLog('StarService: ' + message);
   }
 
 

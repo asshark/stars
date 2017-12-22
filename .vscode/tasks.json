@@ -7,6 +7,11 @@
             "type": "npm",
             "script": "ng",
             "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "start",
+            "problemMatcher": []
         }
     ]
 }

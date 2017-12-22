@@ -13,35 +13,34 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe,TimesPipe} from './filters/pipes';
 import { StarSearchComponent } from './star-search/star-search.component'
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CustomInterceptor } from './star-service/star.service';
+//import { HTTP_INTERCEPTORS } from '@angular/common/http';
+//import { CustomInterceptor } from './star-service/star.service';
 import { CookieService } from 'ngx-cookie-service';
-
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { StarTaggingComponent } from './star-tagging/star-tagging.component';
+import { StarReportComponent } from './star-report/star-report.component';
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule
+  ],
   declarations: [
     AppComponent,
     StarsComponent,
     StarDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe, StarSearchComponent, StarRatingComponent, StarTaggingComponent
+    FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe, 
+    StarSearchComponent, 
+    StarRatingComponent, StarTaggingComponent, StarReportComponent
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule
-  ],
+
   providers: [StarService, MessageService, CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  
-  constructor(private starService: StarService) {
-  }
-  
 
  }

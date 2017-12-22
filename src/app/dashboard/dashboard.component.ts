@@ -26,12 +26,12 @@ export class DashboardComponent implements OnInit {
       {
         this.topstars = allS.filter(item => 
           { 
-            console.log('...items....' + item.rank);
+            //console.log('...items....' + item.rank);
             return ( (item.rank as number) > 4)
           });
           this.newstars = allS.filter(item => 
             { 
-              console.log('...items....' + item.rank);
+              //console.log('...items....' + item.rank);
               return ( item.addeddt > self.starService.lastVisitDate )
             });      
       }

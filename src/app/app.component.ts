@@ -17,7 +17,7 @@ export class AppComponent {
   value = '';
   searchBy(value: string) { 
     this.value = value; 
-    location.assign('/StarSearchComponent:dsssss');
+    //location.assign('/StarSearchComponent:dsssss');
     ////"../node_modules/tether/dist/js/tether.js",
   }
 
