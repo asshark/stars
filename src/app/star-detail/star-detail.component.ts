@@ -36,8 +36,10 @@ export class StarDetailComponent implements OnInit {
   getStar(): void {
     var id = this.route.snapshot.paramMap.get('id');
     this.selectedStar = this.starService.getStar(id);
+    //this.selectedStar.lastseendt = new Date();
     this.imgUrl = "./assets/img/stars/" + this.selectedStar.id + ".png";
     this.starService.getStarClips(id).subscribe(clips => {this.selectedStarClips = clips});
+    this.starService.saveStar(this.selectedStar).subscribe();
     console.log(`selectedStar is = ${this.selectedStar.name}`);
   }
 

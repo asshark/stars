@@ -7,8 +7,8 @@ import { HttpClient, HttpHeaders, HttpEvent, HttpInterceptor, HttpRequest, HttpH
 import { Headers } from '@angular/http';
 import { RequestOptionsArgs } from '@angular/http';
 
-//import { CookieService } from 'ngx-cookie-service';
-//import { MessageService } from '../message-service/message.service';
+import { CookieService } from 'ngx-cookie-service';
+import { MessageService } from '../message-service/message.service';
 
 
 const httpOptions = {
@@ -38,11 +38,11 @@ export class StarService {
   Stars: Star[];
 
   constructor(  private http: HttpClient
-                //,private messageService: MessageService
-                //,private cookieService: CookieService 
+                ,private messageService: MessageService
+                ,private cookieService: CookieService 
               ) 
     {
-      //this.lastVisitDate = new Date(this.cookieService.get('LastVisitDate'));
+      this.lastVisitDate = new Date(this.cookieService.get('LastVisitDate'));
       console.log('StarService instance created');
       //this.messageService.addLog('Service instance created');
       this.oStars = this.http.get<Star[]>(this.starsBaseUrl + this.starsUrlGetAllStars);

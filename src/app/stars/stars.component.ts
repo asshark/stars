@@ -36,8 +36,8 @@ export class StarsComponent implements OnInit {
 
   @HostListener('window:beforeunload')
   onClose() {
-    var today = new Date();
-    this.cookieService.set( 'LastVisitDate', today.toString() );
+    //var today = new Date();
+    //this.cookieService.set( 'LastVisitDate', today.toString() );
   }
 
   getMyStars(): void {

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { Star } from '../model/star';
 import { StarService } from '../star-service/star.service';
  
@@ -8,10 +10,16 @@ import { StarService } from '../star-service/star.service';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  topstars: Star[];
-  newstars: Star[];
+
+
+  reportType: string;
+  topStars: Star[];
+  
+  
  
-  constructor(private starService: StarService) { }
+  constructor(private starService: StarService, private route: ActivatedRoute) {
+    this.reportType = route.snapshot.data[0]['reportType'];
+   }
  
   ngOnInit() {
     this.getTopStars();
@@ -19,22 +27,32 @@ export class DashboardComponent implements OnInit {
   }
  
   getTopStars(): void {
-    //
-    var self = this;
-    this.starService.getAllStar().subscribe
-    (allS => 
-      {
-        this.topstars = allS.filter(item => 
-          { 
-            //console.log('...items....' + item.rank);
-            return ( (item.rank as number) > 4)
-          });
-          this.newstars = allS.filter(item => 
+    
+    
+
+      var self = this;
+      this.starService.getAllStar().subscribe
+      (allS => 
+        {
+          this.topStars = allS.filter(item => 
             { 
-              //console.log('...items....' + item.rank);
-              return ( item.addeddt > self.starService.lastVisitDate )
-            });      
-      }
-    );
+              if(this.reportType === 'TOP')
+                return ( (item.rank as number) > 4)
+              else if(this.reportType === 'MOD')
+                  return ( item.modifieddt > item.lastseendt )
+              else if(this.reportType === 'NEW')
+              {
+                var completedDate = new Date(parseInt(item.lastseendt.replace("/Date(", "").replace(")/")));
+                var dd = completedDate.getDate();
+                var mm = completedDate.getMonth() + 1; //January is 0! 
+                var yyyy = completedDate.getFullYear(); 
+
+                return ( yyyy < 1950 );
+              }
+              else 
+                return false;  
+            });
+        }
+      );
   }
 }

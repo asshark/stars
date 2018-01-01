@@ -12,7 +12,8 @@ export class Star {
     clips: number;
     visible: boolean;
     addeddt: Date;
-    moddt: Date;
+    modifieddt: Date;
+    lastseendt:Date;
     hair: string;
     tatoo: string;
     breast: string;

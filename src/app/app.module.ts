@@ -19,6 +19,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { StarTaggingComponent } from './star-tagging/star-tagging.component';
 import { StarReportComponent } from './star-report/star-report.component';
+import { StarsNewComponent } from './stars-new/stars-new.component';
+import { StarsModComponent } from './stars-mod/stars-mod.component';
 
 @NgModule({
   imports: [
@@ -35,7 +37,7 @@ import { StarReportComponent } from './star-report/star-report.component';
     DashboardComponent,
     FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe, 
     StarSearchComponent, 
-    StarRatingComponent, StarTaggingComponent, StarReportComponent
+    StarRatingComponent, StarTaggingComponent, StarReportComponent, StarsNewComponent, StarsModComponent
   ],
 
   providers: [StarService, MessageService, CookieService ],

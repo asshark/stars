@@ -12,6 +12,7 @@ export class Clip {
     url: string;
     addeddt:Date;
     modifieddt:Date;
+    lastseendt:Date;
     size: number;
     place: string;
     horse: number;
