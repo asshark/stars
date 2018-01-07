@@ -30,6 +30,10 @@ export class StarService {
   private starsUrlGetStarClips = 'GetAllClips/';  // URL to Get All Stars
   private starsUrlSaveStar ='SaveStar';  // URL to SaveApi
   private starsUrlSaveClip ='SaveClip';  // URL to SaveApi
+  private starsUrlDeleteStar ='DeleteStar';  // URL to SaveApi
+  private starsUrlDeleteClip ='DeleteClip';  // URL to SaveApi
+  private starsUrlMakeSeenStars = 'MakeSeenStars';
+
   private clipsUrl = './assets/db/stars/';  // URL to web api
   public lastVisitDate: Date;
   private credentials:string = '';
@@ -86,6 +90,21 @@ export class StarService {
     }
   }
 
+  public deleteItem(itemParent:any, item: any)
+  {
+    if(item.id !== undefined)//Star
+    {
+      this.deleteStar(item as Star).subscribe();
+      console.log("Star saved");
+    }
+    else//if(this.item.id !== undefined)Clip
+    {
+      item.starid = itemParent.id; 
+      this.deleteClip(item as Clip).subscribe();
+      console.log("Clip saved");
+    }
+  }
+
   public saveStar(st: Star):Observable<Star>
   {
     //var st1 = new Star();
@@ -99,6 +118,31 @@ export class StarService {
   {
     //var st1 = new Star();
     return this.http.post<Clip>(this.starsBaseUrl + this.starsUrlSaveClip, cl, {
+      headers : {
+          'Content-Type' : 'application/json; charset=UTF-8'
+      }});
+  }
+
+  public deleteStar(st: Star):Observable<string>
+  {
+    return this.http.post<string>(this.starsBaseUrl + this.starsUrlDeleteStar, st, {
+      headers : {
+          'Content-Type' : 'application/json; charset=UTF-8'
+      }});
+  }
+
+  public deleteClip(cl: Clip):Observable<string>
+  {
+    //var st1 = new Star();
+    return this.http.post<string>(this.starsBaseUrl + this.starsUrlDeleteClip, cl, {
+      headers : {
+          'Content-Type' : 'application/json; charset=UTF-8'
+      }});
+  }
+
+  public makeSeenStars(sts: Star[]):Observable<string>
+  {
+    return this.http.post<string>(this.starsBaseUrl + this.starsUrlMakeSeenStars, null, {
       headers : {
           'Content-Type' : 'application/json; charset=UTF-8'
       }});

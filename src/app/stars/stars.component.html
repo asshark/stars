@@ -29,10 +29,14 @@
     </button>
 </div>
 
+
+
 <div>
         <ul>
                 <li *ngFor="let starE of allstars | sortBy: orderProp | filterByTag: tagFilter | filterByFirstLetter: activeLetter | filterBy: filterName">
-                        <button class="btn btn-danger btn-xs"> &times; </button>                
+                        
+                        <app-star-deleting [item] = "starE" [items] = "allstars"></app-star-deleting>
+
                         <a routerLink="/detail/{{starE.id}}">{{starE.name}}</a>
                         
                         <app-star-rating [item] = "starE"></app-star-rating>

@@ -84,6 +84,4 @@ export class StarsComponent implements OnInit {
       }
     }
   }
-
-
 }

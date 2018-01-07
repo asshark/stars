@@ -12,9 +12,6 @@ import { isType } from '@angular/core/src/type';
 })
 export class StarTaggingComponent implements OnInit {
 
-
-  //@Input() star: Star;
-  //@Input() clip: Clip;
   @Input() item: any;
 
   constructor(private starService: StarService) { 

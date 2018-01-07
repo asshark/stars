@@ -7,9 +7,6 @@ import { StarDetailComponent }  from './star-detail/star-detail.component';
 import { StarSearchComponent }  from './star-search/star-search.component';
 import { StarReportComponent }      from './star-report/star-report.component';
 
-import { StarsNewComponent }      from './stars-new/stars-new.component';
-import { StarsModComponent }      from './stars-mod/stars-mod.component';
-
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'detail/:id', component: StarDetailComponent },

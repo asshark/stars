@@ -1,4 +1,7 @@
-<h3>Top Stars</h3>
+<h3>{{ReportTitle}} - {{topStars.length}}</h3>
+
+<button class="btn btn-danger btn-xs" (click)="makeSeenAll()"> Make Seen All </button>
+
 <div class="grid grid-pad">
   <a *ngFor="let sts of topStars" class="col-1-5"
       routerLink="/detail/{{sts.id}}">
