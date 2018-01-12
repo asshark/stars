@@ -1,4 +1,4 @@
-<h3>{{ReportTitle}} - {{topStars.length}}</h3>
+<h3>{{ReportTitle}} <span *ngIf="topStars"> - {{topStars.length}}</span></h3>
 
 <button class="btn btn-danger btn-xs" (click)="makeSeenAll()"> Make Seen All </button>
 

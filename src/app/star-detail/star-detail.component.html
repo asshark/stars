@@ -1,6 +1,6 @@
 <div *ngIf="selectedStar">
 
-    <div class="card">
+    <!--<div class="card">
         <img src={{imgUrl}} alt="Avatar">
         <div class="container">
           <h4><b>{{selectedStar.name}}</b></h4> 
@@ -9,7 +9,29 @@
           <app-star-tagging [item] = "selectedStar"></app-star-tagging>
 
         </div>
-      </div>
+      </div> -->
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+
+      <div class="w3-container">
+        <div class="w3-card-4" style="width:50%; margin: 0 auto;">
+          <header class="w3-container w3-blue">
+            <h1>{{selectedStar.name}}</h1>
+          </header>
+      
+          <div class="w3-container">
+            <img src={{imgUrl}} style="width:100%" alt="Avatar" >
+          </div>
+      
+          <footer class="w3-container w3-blue">
+            <h5><app-star-rating [item] = "selectedStar"></app-star-rating></h5>
+            <h5><app-star-tagging [item] = "selectedStar"></app-star-tagging></h5>
+          </footer>
+        </div>
+      </div>   
+
 
 <div class="cardClips">
   <ul class="stars">
