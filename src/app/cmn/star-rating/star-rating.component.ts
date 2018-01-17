@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Star } from '../model/star';
-import { Clip } from '../model/clip';
-import { StarService } from '../star-service/star.service';
+import { Star } from '../../model/star';
+import { Clip } from '../../model/clip';
+import { StarService } from '../../star-service/star.service';
 import { isType } from '@angular/core/src/type';
-import {TimesPipe} from '../filters/pipes'
+import {TimesPipe} from '../../filters/pipes'
 
 
 @Component({

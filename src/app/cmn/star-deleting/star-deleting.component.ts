@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { StarService } from '../star-service/star.service';
+import { StarService } from '../../star-service/star.service';
 
 @Component({
   selector: 'app-star-deleting',
