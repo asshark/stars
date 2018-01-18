@@ -38,8 +38,8 @@ export class StarService {
   public lastVisitDate: Date;
   private credentials:string = '';
 
-  oStars: Observable<Star[]>;
-  Stars: Star[];
+  public oStars: Observable<Star[]>;
+  public Stars: Star[];
 
   constructor(  private http: HttpClient
                 ,private messageService: MessageService
@@ -48,7 +48,14 @@ export class StarService {
     {
       this.lastVisitDate = new Date(this.cookieService.get('LastVisitDate'));
       console.log('StarService instance created');
-      //this.messageService.addLog('Service instance created');
+      this.oStars = this.http.get<Star[]>(this.starsBaseUrl + this.starsUrlGetAllStars);
+      this.oStars
+      .subscribe(data => 
+        {
+          this.Stars = data;
+          this.log(`Items in Star db = ${data.length}`), error => console.log(error)
+        });
+  
     }
 
     getCredentials():string {
@@ -64,19 +71,6 @@ export class StarService {
       //this.http.get(this.clipsUrl + id + '.json') as Observable<Clip[]>;
     }
       
-
-  public getAllStar(): Observable<any> {
-    this.oStars = this.http.get<Star[]>(this.starsBaseUrl + this.starsUrlGetAllStars);
-    this.oStars
-    .subscribe(data => 
-      {
-        this.Stars = data;
-        this.log(`Items in Star db = ${data.length}`), error => console.log(error)
-      });
-
-      return this.oStars;
-    }
-
   public saveItem(item: any)
   {
     if(item.id !== undefined)//Star

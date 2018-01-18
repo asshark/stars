@@ -1,11 +1,12 @@
 import { Component, OnInit, Input, HostListener  } from '@angular/core';
 import { Star } from '../../model/star';
 import { StarService } from '../../star-service/star.service';
-import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe} from '../../filters/pipes'
+//import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe} from '../../filters/pipes'
 import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
-  selector: 'app-stars',
+  selector: 'stars-list',
   host: {'window:beforeunload':'onClose'},
   templateUrl: './stars-list.component.html',
   styleUrls: ['./stars-list.component.css']
@@ -14,7 +15,7 @@ export class StarsListComponent implements OnInit {
  
   filterName: string;
   orderProp: string;
-  allstars: Star[];
+  allstars: Observable<Star[]>;
   uniqTags: string[];
   @Input() tagFilter: string[];
   alphabet:string[]; 
@@ -28,10 +29,10 @@ export class StarsListComponent implements OnInit {
 
   ngOnInit() {
     var cr = this.starService.getCredentials();
+    this.getMyStars();
     this.alphabet = "*abcdefghijklmnopqrstuvwxyz".split("");
     this.activeLetter = '*';
-    this.getMyStars();
-    
+    this.orderProp = "Alphabetical";
   }  
 
   @HostListener('window:beforeunload')
@@ -41,9 +42,9 @@ export class StarsListComponent implements OnInit {
   }
 
   getMyStars(): void {
-    this.starService.getAllStar().subscribe(data=>
+    this.allstars = this.starService.oStars;
+    this.allstars.subscribe(data=>
     {
-      this.allstars = data;
       this.prepareUniqueTags();
       console.log(data);
     });
@@ -72,7 +73,7 @@ export class StarsListComponent implements OnInit {
 
     if(this.allstars != null)
     {
-      for(let st of this.allstars)
+      for(let st of this.starService.Stars)
       {
         var localTags = [];
         localTags = st.tags;

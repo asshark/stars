@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Star } from '../model/star';
-import { StarService } from '../star-service/star.service';
+import { Star } from '../../model/star';
+import { StarService } from '../../star-service/star.service';
  
 @Component({
-  selector: 'app-dashboard',
+  selector: 'stars-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: [ './dashboard.component.css' ]
 })
@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
 
   getTopStars(): void {
       var self = this;
-      this.starService.getAllStar().subscribe
+      this.starService.oStars.subscribe
       (allS => 
         {
           this.topStars = allS.filter(item => 

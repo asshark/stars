@@ -33,11 +33,11 @@
 
 <div>
         <ul>
-                <li *ngFor="let starE of allstars | sortBy: orderProp | filterByTag: tagFilter | filterByFirstLetter: activeLetter | filterBy: filterName">
+                <li *ngFor="let starE of allstars | async | sortBy: orderProp | filterByTag: tagFilter | filterByFirstLetter: activeLetter | filterBy: filterName">
                         
                         <app-star-deleting [item] = "starE" [items] = "allstars"></app-star-deleting>
 
-                        <a routerLink="/detail/{{starE.id}}">{{starE.name}}</a>
+                        <a routerLink="{{starE.id}}">{{starE.name}}</a>
                         
                         <app-star-rating [item] = "starE"></app-star-rating>
 

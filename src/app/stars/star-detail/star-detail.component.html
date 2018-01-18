@@ -1,56 +1,56 @@
 <div *ngIf="selectedStar">
 
-    <!--<div class="card">
-        <img src={{imgUrl}} alt="Avatar">
-        <div class="container">
-          <h4><b>{{selectedStar.name}}</b></h4> 
-          <p>Rank {{selectedStar.rank}} & {{selectedStar.clips}} clips</p> 
-          <app-star-rating [item] = "selectedStar"></app-star-rating>
-          <app-star-tagging [item] = "selectedStar"></app-star-tagging>
+  <!--<div class="card">
+      <img src={{imgUrl}} alt="Avatar">
+      <div class="container">
+        <h4><b>{{selectedStar.name}}</b></h4> 
+        <p>Rank {{selectedStar.rank}} & {{selectedStar.clips}} clips</p> 
+        <app-star-rating [item] = "selectedStar"></app-star-rating>
+        <app-star-tagging [item] = "selectedStar"></app-star-tagging>
 
-        </div>
-      </div> -->
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
+      </div>
+    </div> -->
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
 
-      <div class="w3-container">
-        <div class="w3-card-4" style="width:50%; margin: 0 auto;">
-          <header class="w3-container w3-blue">
-            <h1>{{selectedStar.name}}</h1>
-          </header>
-      
-          <div class="w3-container">
-            <img src={{imgUrl}} style="width:100%" alt="Avatar" >
-          </div>
-      
-          <footer class="w3-container w3-blue">
-            <h5><app-star-rating [item] = "selectedStar"></app-star-rating></h5>
-            <h5><app-star-tagging [item] = "selectedStar"></app-star-tagging></h5>
-          </footer>
+    <div class="w3-container">
+      <div class="w3-card-4" style="width:50%; margin: 0 auto;">
+        <header class="w3-container w3-blue">
+          <h1>{{selectedStar.name}}</h1>
+        </header>
+    
+        <div class="w3-container">
+          <img src={{imgUrl}} style="width:100%" alt="Avatar" >
         </div>
-      </div>   
+    
+        <footer class="w3-container w3-blue">
+          <h5><app-star-rating [item] = "selectedStar"></app-star-rating></h5>
+          <h5><app-star-tagging [item] = "selectedStar"></app-star-tagging></h5>
+        </footer>
+      </div>
+    </div>   
 
 
 <div class="cardClips">
-  <ul class="stars">
-    <li *ngFor="let clip of selectedStarClips"> 
-          
-          <app-star-deleting [itemParent] = "selectedStar" [item] = "clip" [items] = "selectedStarClips"></app-star-deleting>
-          <span class="badge">{{clip.name}}</span> 
-          <span>{{clip.studio}}</span>
-          <span>{{clip.series}}</span>
-          <app-star-rating [item] = "clip"></app-star-rating>
-          <app-star-tagging [item] = "clip"></app-star-tagging>
-    </li>
-  </ul>
+<ul class="stars">
+  <li *ngFor="let clip of selectedStarClips"> 
+        
+        <app-star-deleting [itemParent] = "selectedStar" [item] = "clip" [items] = "selectedStarClips"></app-star-deleting>
+        <span class="badge">{{clip.name}}</span> 
+        <span>{{clip.studio}}</span>
+        <span>{{clip.series}}</span>
+        <app-star-rating [item] = "clip"></app-star-rating>
+        <app-star-tagging [item] = "clip"></app-star-tagging>
+  </li>
+</ul>
 </div>
 
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectedStar.name" placeholder="name">
-    </label>
-  </div>
-  <button (click)="goBack()">go back</button>
-  </div>
+<div>
+  <label>name:
+    <input [(ngModel)]="selectedStar.name" placeholder="name">
+  </label>
+</div>
+<button (click)="goBack()">go back</button>
+</div>

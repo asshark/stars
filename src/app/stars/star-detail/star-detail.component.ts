@@ -9,7 +9,7 @@ import { MessageService } from '../../message-service/message.service';
 import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesPipe} from '../../filters/pipes'
 
 @Component({
-  selector: 'app-star-detail',
+  selector: 'star-detail',
   templateUrl: './star-detail.component.html',
   styleUrls: ['./star-detail.component.css']
 })

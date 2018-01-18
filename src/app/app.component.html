@@ -5,13 +5,13 @@
 </div>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dashboard">Dashboard</a>
-  <a href="/starsnew">New Stars</a>
-  <a href="/starsmod">Modified Stars</a>
-  <a href="/stars">Index</a>
-  <a href="/report">Report</a>
-  <a href="/search">Search</a>
-  <a href="#about">About</a>
+  <a routerLink="stars/top" routerLinkActive="active">Dashboard</a>
+  <a routerLink="stars/new" routerLinkActive="active">New Stars</a>
+  <a routerLink="stars/mod" routerLinkActive="active">Modified Stars</a>
+  <a routerLink="stars" routerLinkActive="active">Index</a>
+  <a routerLink="report" routerLinkActive="active">Report</a>
+  <a routerLink="search" routerLinkActive="active">Search</a>
+  <a routerLink="about" routerLinkActive="active">About</a>
   <div class="star-search_right">
       <input #searchBox id="search-box" placeholder="Search ..." 
       (keyup.enter)="searchBy(searchBox.value)"
