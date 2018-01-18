@@ -6,6 +6,8 @@ import { StarsListComponent }   from './stars-list/stars-list.component';
 import { StarDetailComponent } from './star-detail/star-detail.component';
 import { DashboardComponent } from './stars-dasboard/dashboard.component';
 
+
+
 const routes: Routes = [
   { 
     path: '',  component: StarsComponent,
