@@ -52,10 +52,11 @@ export class DashboardComponent implements OnInit {
               else if(this.reportType === 'NEW')
               {
                 this.ReportTitle = 'New Stars';
-                var completedDate = new Date(parseInt(item.lastseendt.replace("/Date(", "").replace(")/")));
-                var dd = completedDate.getDate();
-                var mm = completedDate.getMonth() + 1; //January is 0! 
-                var yyyy = completedDate.getFullYear(); 
+                //var completedDate = new Date(parseInt(item.lastseendt.replace("/Date(", "").replace(")/")));
+                //var dd = completedDate.getDate();
+                //var mm = completedDate.getMonth() + 1; //January is 0! 
+                //var yyyy = completedDate.getFullYear(); 
+                var yyyy = item.lastseendt.getFullYear(); 
 
                 return ( yyyy < 1950 );
               }

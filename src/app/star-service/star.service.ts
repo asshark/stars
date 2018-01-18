@@ -67,8 +67,7 @@ export class StarService {
     }
 
     getStarClips(id: string): Observable<Clip[]> {
-      return this.http.get(this.starsBaseUrl + this.starsUrlGetStarClips + id) as Observable<Clip[]>; 
-      //this.http.get(this.clipsUrl + id + '.json') as Observable<Clip[]>;
+      return this.http.get<Clip[]>(this.starsBaseUrl + this.starsUrlGetStarClips + id); 
     }
       
   public saveItem(item: any)

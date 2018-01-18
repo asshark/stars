@@ -35,7 +35,7 @@
 
 <div class="cardClips">
 <ul class="stars">
-  <li *ngFor="let clip of selectedStarClips"> 
+  <li *ngFor="let clip of selectedStarClips | async"> 
         
         <app-star-deleting [itemParent] = "selectedStar" [item] = "clip" [items] = "selectedStarClips"></app-star-deleting>
         <span class="badge">{{clip.name}}</span> 

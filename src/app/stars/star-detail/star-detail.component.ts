@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 import { NgIf } from '@angular/common';
 import { Star } from '../../model/star';
 import { Clip } from '../../model/clip';
@@ -16,7 +17,7 @@ import {FilterPipe, SortByPipe, FilterByTagPipe, FilterByFirstLetterPipe, TimesP
 export class StarDetailComponent implements OnInit {
 
   @Input() selectedStar: Star;
-  selectedStarClips: Clip[];
+  selectedStarClips: Observable<Clip[]>;
   imgUrl: string;
 
   constructor(
@@ -38,8 +39,11 @@ export class StarDetailComponent implements OnInit {
     this.selectedStar = this.starService.getStar(id);
     //this.selectedStar.lastseendt = new Date();
     this.imgUrl = "./assets/img/stars/" + this.selectedStar.id + ".jpg";
-    this.starService.getStarClips(id).subscribe(clips => {this.selectedStarClips = clips});
-    this.starService.saveStar(this.selectedStar).subscribe();
+    this.selectedStarClips = this.starService.getStarClips(id);
+    this.selectedStarClips.subscribe(data=>
+     {this.starService.saveStar(this.selectedStar).subscribe();} 
+    )
+    
     console.log(`selectedStar is = ${this.selectedStar.name}`);
   }
 
